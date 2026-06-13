@@ -233,6 +233,22 @@ templates/scorecard.md のフォーマットで knowledge/onboarding/scorecard.m
 
 ## Phase 3: AIカンパニー自動構築
 
+### まずフォルダを作る（最初に必ず実行）
+
+ファイルを生成する前に、以下のbashコマンドでフォルダを作成する:
+
+**Mac/Linux:**
+```bash
+mkdir -p knowledge/onboarding knowledge/agents/founder knowledge/agents/bunshin knowledge/agents/secretary company secretary/inbox secretary/todos resources .claude/agents
+```
+
+**Windows:**
+```powershell
+New-Item -ItemType Directory -Force -Path "knowledge\onboarding","knowledge\agents\founder","knowledge\agents\bunshin","knowledge\agents\secretary","company","secretary\inbox","secretary\todos","resources",".claude\agents"
+```
+
+### 次にファイルを生成する
+
 Phase 1-2の全情報を使って以下を自動生成:
 
 1. **ヒアリング記録** → knowledge/onboarding/intake.md
