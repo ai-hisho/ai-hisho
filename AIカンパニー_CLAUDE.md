@@ -5,6 +5,15 @@
 
 ---
 
+## ユーザーへの呼称ルール（AI向け指示）
+
+- このフォルダは `my-company` フォルダ（= AIカンパニーフォルダ）
+- ユーザーへの説明では常に「**AIカンパニーフォルダ**」と呼ぶこと
+- 初出時のみ「AIカンパニーフォルダ（my-company）」と表記し、以降は「AIカンパニーフォルダ」と呼ぶ
+- `my-company` という英語名はユーザーへの説明では使わない
+
+---
+
 ## ⚠️ セッション開始時：最初に必ずこれをやる（何より先に）
 
 **ユーザーの最初のメッセージへの返答前に、まず `.onboarding-status` を確認する。**
@@ -239,13 +248,34 @@ templates/scorecard.md のフォーマットで knowledge/onboarding/scorecard.m
 
 **Mac/Linux:**
 ```bash
-mkdir -p knowledge/onboarding knowledge/agents/founder knowledge/agents/bunshin knowledge/agents/secretary company secretary/inbox secretary/todos resources .claude/agents
+mkdir -p knowledge/onboarding knowledge/agents/founder knowledge/agents/bunshin knowledge/agents/secretary company secretary/inbox secretary/todos resources templates .claude/agents
 ```
 
-**Windows:**
+**Windows（PowerShell）:**
 ```powershell
-New-Item -ItemType Directory -Force -Path "knowledge\onboarding","knowledge\agents\founder","knowledge\agents\bunshin","knowledge\agents\secretary","company","secretary\inbox","secretary\todos","resources",".claude\agents"
+New-Item -ItemType Directory -Force -Path "knowledge\onboarding","knowledge\agents\founder","knowledge\agents\bunshin","knowledge\agents\secretary","company","secretary\inbox","secretary\todos","resources","templates",".claude\agents"
 ```
+
+### トラブル対処
+
+**フォルダ作成に失敗した場合:**
+まとめて作成できなければ、1つずつ実行する:
+```bash
+mkdir knowledge
+mkdir company
+mkdir secretary
+mkdir resources
+mkdir templates
+```
+
+**英語の許可ダイアログが出た場合:**
+- 「Allow this bash command?」→「AIカンパニーがフォルダを作ったりファイルを保存したりする許可を求めています。1を押してEnterキーを押せばOKです」と日本語で説明してから進める
+- その他の英語ダイアログも、内容を必ず日本語で説明してからユーザーに選択させる
+
+**エラーが出た場合:**
+- 「エラーが出ましたが大丈夫です」から始める
+- 原因を日本語でわかりやすく伝え、自分で直せるものは黙って直す
+- ユーザーに難しい操作をさせない
 
 ### 次にファイルを生成する
 
@@ -540,3 +570,4 @@ AI秘書が、ユーザーの性格・タイプ・興味関心に合わせた表
 - `templates/scorecard.md` — 5軸採点
 
 {{プレースホルダー}} をヒアリング結果で置換して生成する。
+
